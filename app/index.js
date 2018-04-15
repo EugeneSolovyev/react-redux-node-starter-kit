@@ -4,10 +4,17 @@ import {
     BrowserRouter as Router
 } from 'react-router-dom';
 
-import App from './components/App';
+import {
+	Provider
+} from 'react-redux';
+import store from './front/store/store.js'
+
+import App from './front/components/App';
 
 ReactDOM.hydrate((
-    <Router>
-        <App state={window.__PRELOADED_STATE__}/>
-    </Router>
+	<Provider store={store}>
+		<Router>
+			<App state={window.__PRELOADED_STATE__}/>
+		</Router>
+	</Provider>
 ), document.getElementById('root'));

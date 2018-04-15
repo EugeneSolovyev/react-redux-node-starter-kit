@@ -6,10 +6,14 @@ import {
     matchPath,
     StaticRouter,
 } from 'react-router-dom';
+import {
+	Provider
+} from 'react-redux';
 
 import routes from './routes';
 import renderFullPage from './renderFullPage';
-import App from '../components/App';
+import App from '../front/components/App';
+import store from '../front/store/store';
 
 import getCurrentState from '../services/getCurrentState';
 
@@ -24,7 +28,7 @@ export default function router(req, res) {
         return;
     }
 
-    return getCurrentState.withAbility()
+    return getCurrentState.init()
         .then(response => {
             const state = {
                 list: _.get(response, 'data.rates', {})
@@ -32,9 +36,11 @@ export default function router(req, res) {
             const context = {};
 
             const html = renderToString(
-                <StaticRouter context={context}>
-                    <App state={state} />
-                </StaticRouter>
+                <Provider store={store}>
+					<StaticRouter context={context}>
+						<App state={state} />
+					</StaticRouter>
+                </Provider>
             );
 
             res.status(200).send(renderFullPage(html, state));
