@@ -1,20 +1,23 @@
-// TODO Why Redux-DevTool doesn't work? How to make to work it correct?
-
 import {
 	createStore,
 	applyMiddleware
 } from 'redux';
 import thunk from 'redux-thunk';
+import { 
+	composeWithDevTools 
+} from 'redux-devtools-extension';
 
 function mainReducer(store = {}, action) {
 	return {
-		init: 'WORKS!!!',
+		init: 'ROMA VERNIS YA VSE PROSHU'
 	};
 }
 
 const store = createStore(
 	mainReducer,
-	applyMiddleware(thunk)
+	composeWithDevTools(
+		applyMiddleware(thunk)
+	)
 );
 
 export default store;

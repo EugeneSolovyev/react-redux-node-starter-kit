@@ -42,6 +42,7 @@
     "parallelshell": "^3.0.2",
     "redux-devtools": "^3.4.1",
     "redux-devtools-dock-monitor": "^1.1.3",
+    "redux-devtools-extension": "^2.13.2",
     "redux-devtools-log-monitor": "^1.4.0",
     "webpack": "^2.1.0-beta.21"
   }

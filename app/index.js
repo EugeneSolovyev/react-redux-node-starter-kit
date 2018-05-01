@@ -14,7 +14,7 @@ import App from './front/components/App';
 ReactDOM.hydrate((
 	<Provider store={store}>
 		<Router>
-			<App state={window.__PRELOADED_STATE__}/>
+			<App state={window.__PRELOADED_STATE_}/>
 		</Router>
 	</Provider>
 ), document.getElementById('root'));

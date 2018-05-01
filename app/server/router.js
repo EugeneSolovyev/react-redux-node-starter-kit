@@ -24,7 +24,7 @@ export default function router(req, res) {
     }) || acc, null);
 
     if (!match) {
-        res.status(404).send('page not found');
+        res.status(404).send('<h1>Sorry...Page not found</h1>');
         return;
     }
 
@@ -33,8 +33,9 @@ export default function router(req, res) {
             const state = {
                 list: _.get(response, 'data.rates', {})
             };
-            const context = {};
-
+            const context = {
+                name: 'Romachka vernis pizduk ya vse proshchu'
+            };
             const html = renderToString(
                 <Provider store={store}>
 					<StaticRouter context={context}>
